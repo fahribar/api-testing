@@ -43,4 +43,13 @@ app.post('/store-goal', (req, res) => {
   res.redirect('/');
 });
 
-app.listen(80);
+app.get('/ping',(req, res) => 
+{
+   res.send({
+    status: 'success',
+    message: 'ping',
+ 
+  })});
+
+
+app.listen(9876);
