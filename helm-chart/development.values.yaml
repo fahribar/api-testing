@@ -10,7 +10,7 @@ image:
   repository: image-registry.openshift-image-registry.svc:5000/wsa/api-testing
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "0.1.00"
+  tag: "0.7.14.7"
 
 imagePullSecrets: []
 nameOverride: ""
