@@ -7,6 +7,11 @@ COPY ./package.json /app/
 RUN npm install
 
 COPY . .
+RUN mkdir -p ./log
+
+RUN chown newuser ./log
+
+USER newuser
 
 EXPOSE 9876
 
