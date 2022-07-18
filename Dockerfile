@@ -20,7 +20,7 @@ USER newuser
 
 WORKDIR /app/log
 
-COPY --from=build --chown=newuser:nodejs /app .
+COPY --from=build --chown=newuser:nodejs /app ./
 
 RUN chmod 775 /app
 
@@ -29,6 +29,8 @@ RUN chown -R newuser:nodejs /app
 USER newuser
 
 WORKDIR /app
+
+RUN ls -al
 
 EXPOSE 9876
 
