@@ -22,9 +22,13 @@ RUN mkdir -p ./log
 
 RUN chown newuser ./log
 
-COPY --from=build --chown=newuser:nodejs . .
+COPY --from=build --chown=newuser:nodejs /app .
+
+RUN chmod 775 /app
 
 RUN chown -R newuser:nodejs /app
+
+USER newuser
 
 WORKDIR /app
 
