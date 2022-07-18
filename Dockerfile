@@ -22,7 +22,7 @@ WORKDIR /app/log
 
 #COPY --from=build --chown=newuser:nodejs /app/ ./
 
-RUN chmod 775 /app
+#RUN chmod 775 /app
 
 RUN chown -R newuser:nodejs /app
 
