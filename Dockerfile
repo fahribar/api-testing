@@ -18,9 +18,9 @@ WORKDIR /app
 
 USER newuser
 
-RUN mkdir -p ./log
+WORKDIR /app/log
 
-RUN chown newuser ./log
+RUN chown newuser /app/log
 
 COPY --from=build --chown=newuser:nodejs /app .
 
