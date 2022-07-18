@@ -6,7 +6,7 @@ const { Console } = require("console");
 const fs = require("fs");
 
 const myLogger = new Console({
-  stdout: fs.createWriteStream("./log/logging.txt")
+  stdout: fs.createWriteStream("/app/log/logging.txt")
 });
 
 const app = express();

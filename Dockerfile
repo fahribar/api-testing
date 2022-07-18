@@ -8,8 +8,6 @@ RUN npm install
 
 COPY . .
 
-FROM node:16.13-alpine
-
 RUN addgroup -g 101 -S nodejs
 
 RUN adduser -S newuser -u 101 -G nodejs
@@ -20,7 +18,9 @@ USER newuser
 
 WORKDIR /app/log
 
-#COPY --from=build --chown=newuser:nodejs /app/ ./
+WORKDIR /app/
+
+COPY --chown=newuser:nodejs . .
 
 #RUN chmod 775 /app
 
