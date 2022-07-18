@@ -24,7 +24,7 @@ WORKDIR /app/log
 
 #RUN chmod 775 /app
 
-RUN chown -R newuser:nodejs /app
+#RUN chown -R newuser:nodejs /app
 
 USER newuser
 
