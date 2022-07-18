@@ -1,6 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
+const { Console } = require("console");
+
+const fs = require("fs");
+
+const myLogger = new Console({
+  stdout: fs.createWriteStream("logging.txt")
+});
+
 const app = express();
 
 let userGoal = 'Versi baru nich';
@@ -38,7 +46,7 @@ app.get('/', (req, res) => {
 
 app.post('/store-goal', (req, res) => {
   const enteredGoal = req.body.goal;
-  console.log(enteredGoal);
+  myLogger.log(enteredGoal);
   userGoal = enteredGoal;
   res.redirect('/');
 });
