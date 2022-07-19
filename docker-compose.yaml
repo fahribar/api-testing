@@ -1,0 +1,39 @@
+version: "3.8"
+
+services: 
+  elasticsearch:
+    # image: 'nginx:stable-alpine'
+    image: elasticsearch:8.3.2
+    ports: 
+      - '9200:9200'    
+    expose:
+      - 9200
+  kibana:
+    image: kibana:8.3.2
+    ports:
+      - '5601:5601'
+  api-testing:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '9876:9876'
+    depends_on: 
+      - kibana
+      - elasticsearch
+  fluentd:
+    image: fluentd:v1.14.0-1.0
+    ports:
+      - '24224:24224'
+      - '24224:24224/udp'
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+  # mysql:
+  #   image: mysql:5.7
+  #   environment:
+  #     - MYSQL_DATABASE=homestead
+  #     - MYSQL_USER=homestead
+  #     - MYSQL_PASSWORD=secret
+  #     - MYSQL_ROOT_PASSWORD=secret
+  #   # env_file: 
+  #   #   - ./env/mysql.env
